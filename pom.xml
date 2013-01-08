@@ -22,14 +22,14 @@
 
 	<groupId>com.barchart.bench</groupId>
 	<artifactId>barchart-bench</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<scm>
 		<url>https://github.com/barchart/barchart-bench</url>
 		<connection>scm:git:git://github.com/barchart/barchart-bench.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-bench.git</developerConnection>
-	  <tag>barchart-bench-1.0.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<properties>
