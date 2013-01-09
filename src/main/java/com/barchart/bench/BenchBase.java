@@ -3,6 +3,7 @@ package com.barchart.bench;
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,6 +11,7 @@ import com.google.caliper.CaliperRc;
 import com.google.caliper.Runner;
 import com.google.caliper.SimpleBenchmark;
 
+/** for caliper v 0.5 */
 public abstract class BenchBase extends SimpleBenchmark implements Bench {
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());
@@ -38,7 +40,7 @@ public abstract class BenchBase extends SimpleBenchmark implements Bench {
 	}
 
 	@Override
-	public void execute() throws Exception {
+	public void execute(final String... args) throws Exception {
 
 		final File buildDir = new File(getClass().getResource("/").getPath())
 				.getParentFile();
@@ -70,14 +72,17 @@ public abstract class BenchBase extends SimpleBenchmark implements Bench {
 			fail("missing caliper config");
 		}
 
-		new Runner().run( //
+		final String[] runnerArgs = ArrayUtils.addAll(args, //
+				new String[] {//
 				"--marker", "###MARKER###", //
-				"--trials", String.valueOf(trialCount), //
-				"--warmupMillis", String.valueOf(warmupMillis), //
-				"--runMillis", String.valueOf(reportMillis), //
-				"--saveResults", reportDir.getAbsolutePath(), //
-				"--captureVmLog", getClass().getName() //
-				);
+						"--trials", String.valueOf(trialCount), //
+						"--warmupMillis", String.valueOf(warmupMillis), //
+						"--runMillis", String.valueOf(reportMillis), //
+						"--saveResults", reportDir.getAbsolutePath(), //
+						"--captureVmLog", getClass().getName() //
+				});
+
+		new Runner().run(runnerArgs);
 	}
 
 }

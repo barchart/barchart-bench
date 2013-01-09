@@ -2,6 +2,6 @@ package com.barchart.bench;
 
 public interface Bench {
 
-	void execute() throws Exception;
+	void execute(String... args) throws Exception;
 
 }
