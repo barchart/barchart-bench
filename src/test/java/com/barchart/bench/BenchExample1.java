@@ -16,27 +16,27 @@ import com.yammer.metrics.core.TimerContext;
 /**
  * Example benchmark setup.
  */
-public class BenchExample1 extends BenchBase {
+public class BenchExample1 extends BenchBase1 {
 
 	@Param
 	private volatile int latency;
 
 	protected static List<String> latencyValues() {
-		return BenchBase.latencyList();
+		return BenchBase1.latencyList();
 	}
 
 	@Param
 	private volatile int message;
 
 	protected static List<String> messageValues() {
-		return BenchBase.messageList();
+		return BenchBase1.messageList();
 	}
 
 	@Param
 	private volatile int duration;
 
 	protected static List<String> durationValues() {
-		return BenchBase.durationList();
+		return BenchBase1.durationList();
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class BenchExample1 extends BenchBase {
 	}
 
 	public static void main(final String[] args) throws Exception {
-		CaliperRunner.execute(BenchExample1.class);
+		MetricsRunner.execute(BenchExample1.class);
 	}
 
 }

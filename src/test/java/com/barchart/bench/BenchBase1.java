@@ -12,25 +12,25 @@ import java.util.List;
 /**
  * Example base benchmark class.
  */
-public abstract class BenchBase extends CaliperBench {
+public abstract class BenchBase1 extends MetricsBench {
 
 	/** introduce network latency */
 	protected static List<String> latencyList() {
 		if (TrafficControl.isAvailable()) {
-			return CaliperRunner.valueList("0,10");
+			return MetricsRunner.valueList("0,10");
 		} else {
-			return CaliperRunner.valueList("0");
+			return MetricsRunner.valueList("0");
 		}
 	}
 
 	/** verify different message sizes */
 	protected static List<String> messageList() {
-		return CaliperRunner.valueList("500,1500");
+		return MetricsRunner.valueList("500,1500");
 	}
 
 	/** benchmark run time per each configuration */
 	protected static List<String> durationList() {
-		return CaliperRunner.valueList("6000");
+		return MetricsRunner.valueList("6000");
 	}
 
 }

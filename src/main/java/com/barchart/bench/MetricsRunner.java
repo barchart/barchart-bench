@@ -37,14 +37,14 @@ import com.google.caliper.SimpleBenchmark;
 import com.yammer.metrics.core.TimerContext;
 
 /**
- * Custom caliper runner for {@link CaliperBench}.
+ * Custom caliper runner for {@link MetricsBench}.
  */
-public final class CaliperRunner {
+public final class MetricsRunner {
 
 	private final static Logger log = LoggerFactory
-			.getLogger(CaliperRunner.class);
+			.getLogger(MetricsRunner.class);
 
-	private CaliperRunner() {
+	private MetricsRunner() {
 	}
 
 	/**
@@ -57,7 +57,7 @@ public final class CaliperRunner {
 	/**
 	 * Execute full cycle: warm up, execute and publish benchmark.
 	 */
-	public static void execute(final Class<? extends CaliperBench> klaz)
+	public static void execute(final Class<? extends MetricsBench> klaz)
 			throws Exception {
 		Run run;
 		run = execute("WARMUP", klaz);
@@ -71,9 +71,9 @@ public final class CaliperRunner {
 	 * Execute benchmark for all parameter combinations.
 	 */
 	public static Run execute(final String name,
-			final Class<? extends CaliperBench> klaz) throws Exception {
+			final Class<? extends MetricsBench> klaz) throws Exception {
 
-		final CaliperBench booter = klaz.newInstance();
+		final MetricsBench booter = klaz.newInstance();
 
 		final List<Map<String, String>> varsSet = product(booter);
 
@@ -88,8 +88,8 @@ public final class CaliperRunner {
 			/** call setUp() */
 			final ConfiguredBenchmark runner = booter.createBenchmark(vars);
 
-			final CaliperBench bench = (CaliperBench) runner.getBenchmark();
-			final CaliperMeasure measure = bench.measure();
+			final MetricsBench bench = (MetricsBench) runner.getBenchmark();
+			final MetricsMeasure measure = bench.measure();
 			measure.variables().putAll(vars);
 
 			/** call timeXXX() */
@@ -217,7 +217,7 @@ public final class CaliperRunner {
 	public static void main(final String[] args) throws Exception {
 		final Run run = newRun("test-main");
 		for (int param = 0; param < 5; param++) {
-			final CaliperMeasure measure = new CaliperMeasure();
+			final MetricsMeasure measure = new MetricsMeasure();
 			measure.variables().put("param", "" + param);
 			for (int step = 0; step < 5; step++) {
 				measure.rate().mark(50 + step);

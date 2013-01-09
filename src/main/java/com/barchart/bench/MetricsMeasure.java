@@ -29,10 +29,10 @@ import com.yammer.metrics.core.Timer;
  * <p>
  * measure up to 3 values: {@link #rate()}, {@link #time()}, {@link #size()}
  */
-public class CaliperMeasure {
+public class MetricsMeasure {
 
 	private final static Logger log = LoggerFactory
-			.getLogger(CaliperMeasure.class);
+			.getLogger(MetricsMeasure.class);
 
 	/**
 	 * Gauge any double value

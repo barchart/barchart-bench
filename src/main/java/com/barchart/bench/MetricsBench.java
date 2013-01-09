@@ -13,18 +13,18 @@ import org.slf4j.LoggerFactory;
 import com.google.caliper.SimpleBenchmark;
 
 /**
- * Base class for caliper/metrics benchmarks.
+ * Base class for metrics benchmarks.
  */
-public abstract class CaliperBench extends SimpleBenchmark {
+public abstract class MetricsBench extends SimpleBenchmark {
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 
-	private volatile CaliperMeasure measure;
+	private volatile MetricsMeasure measure;
 
 	/**
 	 * Caliper metrics wrapper.
 	 */
-	protected CaliperMeasure measure() {
+	protected MetricsMeasure measure() {
 		return measure;
 	}
 
@@ -33,7 +33,7 @@ public abstract class CaliperBench extends SimpleBenchmark {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		measure = new CaliperMeasure();
+		measure = new MetricsMeasure();
 	}
 
 	/**
