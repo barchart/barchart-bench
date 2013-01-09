@@ -98,10 +98,12 @@ public class MetricsDemoTest extends MetricsDemo {
 
 	}
 
+	/** run as java app */
 	public static void main(final String... args) throws Exception {
 		MetricsRunner.execute(MetricsDemoTest.class);
 	}
 
+	/** run as junit test */
 	@Test
 	public void test() throws Exception {
 		main();
