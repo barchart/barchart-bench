@@ -79,8 +79,8 @@ public class MetricsDemoTest extends MetricsDemo {
 					/** measure time */
 					final TimerContext time = measure().time().time();
 					try {
-						Thread.sleep(1000);
-					} catch (final InterruptedException e) {
+						NetworkUtil.ping("localhost");
+					} catch (final Exception e) {
 						log.error("", e);
 					}
 					time.stop();
