@@ -40,7 +40,8 @@ public abstract class BenchBase extends SimpleBenchmark implements Bench {
 	@Override
 	public void execute() throws Exception {
 
-		final File buildDir = new File(getClass().getResource("/").getPath());
+		final File buildDir = new File(getClass().getResource("/").getPath())
+				.getParentFile();
 
 		if (!buildDir.exists()) {
 			fail("failed to determine the class path");
@@ -70,6 +71,7 @@ public abstract class BenchBase extends SimpleBenchmark implements Bench {
 		}
 
 		new Runner().run( //
+				"--marker", "###MARKER###", //
 				"--trials", String.valueOf(trialCount), //
 				"--warmupMillis", String.valueOf(warmupMillis), //
 				"--runMillis", String.valueOf(reportMillis), //

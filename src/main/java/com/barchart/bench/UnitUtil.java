@@ -18,9 +18,9 @@ import org.slf4j.LoggerFactory;
 /**
  * Unit test helper.
  */
-public final class UnitHelp {
+public final class UnitUtil {
 
-	private static final Logger log = LoggerFactory.getLogger(UnitHelp.class);
+	private static final Logger log = LoggerFactory.getLogger(UnitUtil.class);
 
 	/**
 	 * Measure ping time to a host.
@@ -106,7 +106,7 @@ public final class UnitHelp {
 		return hostedSocketAddress("localhost");
 	}
 
-	private UnitHelp() {
+	private UnitUtil() {
 	}
 
 }

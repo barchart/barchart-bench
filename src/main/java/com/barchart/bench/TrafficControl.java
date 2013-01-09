@@ -36,11 +36,11 @@ public final class TrafficControl {
             final int millis = 100;
             final int margin = 20;
             delay(0);
-            final long time1 = UnitHelp.ping("localhost");
+            final long time1 = UnitUtil.ping("localhost");
             delay(millis);
-            final long time2 = UnitHelp.ping("localhost");
+            final long time2 = UnitUtil.ping("localhost");
             delay(0);
-            final long time3 = UnitHelp.ping("localhost");
+            final long time3 = UnitUtil.ping("localhost");
             return time2 >= time1 + millis - margin
                     && time2 >= time3 + millis - margin;
         } catch (final Throwable e) {
@@ -59,12 +59,12 @@ public final class TrafficControl {
         }
         final int delay = time / 2;
         if (delay == 0) {
-            UnitHelp.process(String.format(TC_RESET, "lo"));
+            UnitUtil.process(String.format(TC_RESET, "lo"));
         } else {
             /** extend packet buffer queue to avoid packet loss due to latency */
             final int limit = 1024 * 1024;
-            UnitHelp.process(String.format(TC_RESET, "lo"));
-            UnitHelp.process(String.format(TC_DELAY, "lo", delay, limit));
+            UnitUtil.process(String.format(TC_RESET, "lo"));
+            UnitUtil.process(String.format(TC_DELAY, "lo", delay, limit));
         }
     }
 
