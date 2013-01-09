@@ -10,33 +10,35 @@ package com.barchart.bench;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.junit.Test;
+
 import com.google.caliper.Param;
 import com.yammer.metrics.core.TimerContext;
 
 /**
  * Example benchmark setup.
  */
-public class BenchExampleDemo extends BenchBaseDemo {
+public class MetricsDemoTest extends MetricsDemo {
 
 	@Param
 	private volatile int latency;
 
 	protected static List<String> latencyValues() {
-		return BenchBaseDemo.latencyList();
+		return MetricsDemo.latencyList();
 	}
 
 	@Param
 	private volatile int message;
 
 	protected static List<String> messageValues() {
-		return BenchBaseDemo.messageList();
+		return MetricsDemo.messageList();
 	}
 
 	@Param
 	private volatile int duration;
 
 	protected static List<String> durationValues() {
-		return BenchBaseDemo.durationList();
+		return MetricsDemo.durationList();
 	}
 
 	@Override
@@ -96,8 +98,13 @@ public class BenchExampleDemo extends BenchBaseDemo {
 
 	}
 
-	public static void main(final String[] args) throws Exception {
-		MetricsRunner.execute(BenchExampleDemo.class);
+	public static void main(final String... args) throws Exception {
+		MetricsRunner.execute(MetricsDemoTest.class);
+	}
+
+	@Test
+	public void test() throws Exception {
+		main();
 	}
 
 }

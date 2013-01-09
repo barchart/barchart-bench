@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Example base benchmark class.
  */
-public abstract class BenchBaseDemo extends MetricsBench {
+public abstract class MetricsDemo extends MetricsBench {
 
 	/** introduce network latency */
 	protected static List<String> latencyList() {
